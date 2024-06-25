@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>完美座位表</title>
+    <style>
+        .container {
+            position: relative;
+            width: 400px;
+            /* 與圖片相同的寬度 */
+            height: 400px;
+            /* 與圖片相同的高度 */
+            overflow: hidden;
+            /* 隱藏溢出內容 */
+        }
+
+        body {
+            height: 400px;
+            width: 400px;
+            overflow: hidden;
+            background-color: #f4f4f4;
+        }
+
+        #space {
+            width: 400px;
+            height: 400px;
+        }
+
+        .chair {
+            width: 25px;
+            position: absolute;
+            /* 絕對定位，相對於包含它的容器 */
+            cursor: pointer;
+            z-index: 0;
+        }
+
+        .chariReserved {
+            width: 25px;
+            position: absolute;
+            cursor: pointer;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .table {
+            position: absolute;
+            opacity: 1;
+            z-index: 2;
+            width: 80px;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="container">
+        <img id="space" src="../images/空白座位圖new.PNG" alt="">
+        <img id="table1" class="table" src=" ../images/四人桌.png" style="left: 10px; top: 10px;">
+        <img id="table2" class="table" src="../images/四人桌.png " style="left: 10px; top:90px;">
+        <img id="table3" class="table" src="../images/四人桌.png " style="left: 10px; top: 170px;">
+        <img id="table4" class="table" src="../images/四人桌.png " style="left: 10px; top: 250px;">
+        <img id="chair1" class="chair" src="../images/面左.png" style="left: 100px; top: 15px;">
+        <img id="chair2" class="chair" src="../images/面左.png" style="left: 100px; top: 55px;">
+        <img id="chair3" class="chair" src="../images/面左.png" style="left: 100px; top: 95px;">
+        <img id="chair4" class="chair" src="../images/面左.png" style="left: 100px; top: 135px;">
+        <img id="chair5" class="chair" src="../images/面左.png" style="left: 100px; top: 175px;">
+        <img id="chair6" class="chair" src="../images/面左.png" style="left: 100px; top: 215px;">
+        <img id="chair7" class="chair" src="../images/面左.png" style="left: 100px; top: 255px;">
+        <img id="chair8" class="chair" src="../images/面左.png" style="left: 100px; top: 295px;">
+        <img id="table4" class="table" src="../images/四人桌.png " style="left: 180px; top: 50px;">
+        <img id="table5" class="table" src="../images/四人桌.png " style="left: 180px; top: 200px;">
+        <img id="chair9" class="chair" src="../images/面左.png" style="left: 261px; top: 55px;">
+        <img id="chair10" class="chair" src="../images/面左.png" style="left: 261px; top: 100px;">
+        <img id="chair11" class="chair" src="../images/面左.png" style="left: 261px; top: 205px;">
+        <img id="chair12" class="chair" src="../images/面左.png" style="left: 261px; top: 250px;">
+        <img id="chair13" class="chair" src="../images/面右.png" style="left: 154px; top: 55px;">
+        <img id="chair14" class="chair" src="../images/面右.png" style="left: 154px; top: 100px;">
+        <img id="chair15" class="chair" src="../images/面右.png" style="left: 154px; top: 205px;">
+        <img id="chair16" class="chair" src="../images/面右.png" style="left: 154px; top: 250px;">
+        <img id="table6" class="table" src="../images/四人桌.png " style="left: 310px; top: 50px;">
+        <img id="table7" class="table" src="../images/四人桌.png " style="left: 310px; top: 200px;">
+        <img id="chair17" class="chair" src="../images/面下.png" style="left: 310px; top: 23px;">
+        <img id="chair18" class="chair" src="../images/面下.png" style="left: 310px; top: 174px;">
+        <img id="chair19" class="chair" src="../images/面下.png" style="left: 360px; top: 23px;">
+        <img id="chair20" class="chair" src="../images/面下.png" style="left: 360px; top: 174px;">
+        <img id="chair21" class="chair" src="../images/面上.png" style="left: 310px; top: 132px;">
+        <img id="chair22" class="chair" src="../images/面上.png" style="left: 360px; top: 132px;">
+        <img id="chair23" class="chair" src="../images/面上.png" style="left: 310px; top: 282px;">
+        <img id="chair24" class="chair" src="../images/面上.png" style="left: 360px; top: 282px;">
+        <img id="chair25" class="chariReserved" src="../images/面左(預定).png" style="left: 100px; top: 15px;">
+        <img id="chair26" class="chariReserved" src="../images/面左(預定).png" style="left: 100px; top: 55px;">
+        <img id="chair27" class="chariReserved" src="../images/面左(預定).png" style="left: 100px; top: 95px;">
+        <img id="chair28" class="chariReserved" src="../images/面左(預定).png" style="left: 100px; top: 135px;">
+        <img id="chair29" class="chariReserved" src="../images/面左(預定).png" style="left: 100px; top: 175px;">
+        <img id="chair30" class="chariReserved" src="../images/面左(預定).png" style="left: 100px; top: 215px;">
+        <img id="chair31" class="chariReserved" src="../images/面左(預定).png" style="left: 100px; top: 255px;">
+        <img id="chair32" class="chariReserved" src="../images/面左(預定).png" style="left: 100px; top: 295px;">
+        <img id="chair33" class="chariReserved" src="../images/面左(預定).png" style="left: 261px; top: 55px;">
+        <img id="chair34" class="chariReserved" src="../images/面左(預定).png" style="left: 261px; top: 100px;">
+        <img id="chair35" class="chariReserved" src="../images/面左(預定).png" style="left: 261px; top: 205px;">
+        <img id="chair36" class="chariReserved" src="../images/面左(預定).png" style="left: 261px; top: 250px;">
+        <img id="chair37" class="chariReserved" src="../images/面右(預定).png" style="left: 154px; top: 55px;">
+        <img id="chair38" class="chariReserved" src="../images/面右(預定).png" style="left: 154px; top: 100px;">
+        <img id="chair39" class="chariReserved" src="../images/面右(預定).png" style="left: 154px; top: 205px;">
+        <img id="chair40" class="chariReserved" src="../images/面右(預定).png" style="left: 154px; top: 250px;">
+        <img id="chair41" class="chariReserved" src="../images/面下(預定).png" style="left: 310px; top: 23px;">
+        <img id="chair42" class="chariReserved" src="../images/面下(預定).png" style="left: 310px; top: 174px;">
+        <img id="chair43" class="chariReserved" src="../images/面下(預定).png" style="left: 360px; top: 23px;">
+        <img id="chair44" class="chariReserved" src="../images/面下(預定).png" style="left: 360px; top: 174px;">
+        <img id="chair45" class="chariReserved" src="../images/面上(預定).png" style="left: 310px; top: 132px;">
+        <img id="chair46" class="chariReserved" src="../images/面上(預定).png" style="left: 360px; top: 132px;">
+        <img id="chair47" class="chariReserved" src="../images/面上(預定).png" style="left: 310px; top: 282px;">
+        <img id="chair48" class="chariReserved" src="../images/面上(預定).png" style="left: 360px; top: 282px;">
+    </div>
+
+
+    <p id="countdown"></p>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(function () {
+            $(".chariReserved").click(function () {
+                var opacity = $(this).css("opacity");
+                var countdownElement = document.getElementById("countdown");
+
+                countdownElement.style.display = "block";
+
+                if (opacity === "0") {
+                    $(this).css("opacity", "1"); // 將透明度設置為1，顯示椅子
+                    var minutes = 60; // 設定倒數時間為3分鐘
+                    var seconds = minutes * 60; // 將分鐘轉換為秒數
+
+                    var timer = setInterval(function () {
+                        var minutesRemaining = Math.floor(seconds / 60);
+                        var secondsRemaining = seconds % 60;
+
+                        // 在畫面上顯示剩餘時間
+                        countdownElement.textContent = minutesRemaining + ":" + (secondsRemaining < 10 ? "0" : "") + secondsRemaining;
+
+                        // 每秒減少一秒
+                        seconds--;
+
+                        // 如果時間倒數為0，清除計時器並顯示時間到
+                        if (seconds < 0) {
+                            clearInterval(timer);
+                            countdownElement.textContent = "時間到！";
+                        }
+                    }, 1000); // 每秒執行一次
+
+                    // 在此處將計時器存儲在元素的數據屬性中，以便稍後使用
+                    $(this).data("timer", timer);
+
+                } else {
+                    $(this).css("opacity", "0"); // 將透明度設置為0，隱藏椅子
+
+                    // 隱藏計時器的p標籤
+                    countdownElement.style.display = "none";
+
+                    // 獲取存儲在元素數據屬性中的計時器，並清除它
+                    var timer = $(this).data("timer");
+                    clearInterval(timer);
+                }
+            });
+        });
+
+
+    </script>
+</body>
+
+</html>

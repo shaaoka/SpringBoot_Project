@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+.userphoto {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}

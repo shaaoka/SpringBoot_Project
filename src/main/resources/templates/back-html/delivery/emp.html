@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>外送員工送單量</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/png" href="../../../static/images/member/pizzaQ.png" />
+    <link rel="stylesheet" href="../../static/back/css/delivery/delivery.css">
+    <link rel="stylesheet" href="../../static/back/css/styles.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+</head>
+<body>
+    <!--  Body Wrapper -->
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar">
+      <!-- Sidebar scroll-->
+      <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="#" class="text-nowrap logo-img">
+            <img src="../../../static/images/indexImages/DonerPizzaSmall.png" width="180" alt="" />
+            <link rel="shortcut icon" type="image/png" href="../../../static/images/logos/favicon.png" />
+          </a>
+          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+            <i class="ti ti-x fs-8"></i>
+          </div>
+        </div>
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+          <ul id="sidebarnav">
+            <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i> <span
+                class="hide-menu">後台功能列表</span></li>
+                <ul class="sidebar-item"><a class="sidebar-link" href="/delivery/home"
+                  aria-expanded="false"> <span> <i class="ti ti-file-description"></i>
+                  </span> <span class="hide-menu">外送單管理功能</span>
+                </a>
+               </ul>
+              <li class="sidebar-item"><a class="sidebar-link" href="/delivery/state/accept"
+                aria-expanded="false"> <span> <i class="ti ti-file-description"></i>
+                </span> <span class="hide-menu">外送員管理功能</span>
+              </a>
+            </li>
+            <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i> <span
+                class="hide-menu">其他功能列表</span></li>
+                <li class="sidebar-item"><a class="sidebar-link" href="/emp/Member.SelectAll/1"
+                aria-expanded="false"> <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span> <span class="hide-menu">會員管理功能</span>
+              </a></li>
+            <li class="sidebar-item"><a class="sidebar-link" href="/product/Product_Test_Main"
+                aria-expanded="false"> <span>
+                  <i class="ti ti-article"></i>
+                </span> <span class="hide-menu">產品管理功能</span>
+              </a></li>
+            <li class="sidebar-item"><a class="sidebar-link" href="/order/order.action"
+                aria-expanded="false"> <span>
+                  <i class="ti ti-alert-circle"></i>
+                </span> <span class="hide-menu">訂單管理功能</span>
+              </a></li>
+            <li class="sidebar-item"><a class="sidebar-link"
+                href="/reservation/reservemain.controller" aria-expanded="false"> <span> <i
+                    class="ti ti-cards"></i>
+                </span> <span class="hide-menu">訂位管理功能</span>
+              </a></li>
+            
+            <li class="sidebar-item"><a class="sidebar-link" href="/promotions/promotionsMain"
+                aria-expanded="false"> <span>
+                  <i class="ti ti-typography"></i>
+                </span> <span class="hide-menu">活動管理功能</span>
+              </a></li>
+            <li class="sidebar-item"><a class="sidebar-link" href="/emp/EmpGoBackToEmpIndex"
+                aria-expanded="false"> <span>
+                  <i class="ti ti-typography"></i>
+                </span> <span class="hide-menu">返回主頁</span>
+              </a></li>
+          </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+      </div>
+      <!-- End Sidebar scroll-->
+    </aside>
+    <!--  Sidebar End -->
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+      <!--  Header Start -->
+      <header class="app-header">
+      
+       <nav class="navbar navbar-expand-lg navbar-light">
+           <ul class="navbar-nav">
+               <li class="nav-item d-block d-xl-none">
+                   <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse"
+                       href="javascript:void(0)">
+                       <i class="ti ti-menu-2"></i>
+                   </a>
+               </li>
+               <li class="nav-item">
+                   <a class="nav-link nav-icon-hover" href="javascript:void(0)">
+                       <i class="ti ti-bell-ringing"></i>
+                       <div class="notification bg-primary rounded-circle"></div>
+                   </a>
+               </li>
+           </ul>
+           <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+               <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+                   <li class="nav-item dropdown"><a class="nav-link nav-icon-hover" href="javascript:void(0)"
+                           id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
+                           <img src="/member/user.png" alt="" width="35" height="35" class="rounded-circle"
+                               th:each="emp : ${emp}"><span th:text="${emp.detailBean.empName}"></span>
+                       </a>
+                       <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
+                           aria-labelledby="drop2">
+                           <div class="message-body">
+                               <a href="javascript:void(0)"
+                                   class="d-flex align-items-center gap-2 dropdown-item"> <i
+                                       class="ti ti-user fs-6"></i>
+                                   <p class="mb-0 fs-3">My Profile</p>
+                               </a> <a href="javascript:void(0)"
+                                   class="d-flex align-items-center gap-2 dropdown-item"> <i
+                                       class="ti ti-mail fs-6"></i>
+                                   <p class="mb-0 fs-3">My Account</p>
+                               </a>
+                               </a> <a href="javascript:void(0)"
+                                   class="d-flex align-items-center gap-2 dropdown-item"> <i
+                                       class="ti ti-list-check fs-6"></i>
+                                   <p class="mb-0 fs-3">My Task</p>
+                               </a> <a href="/emp/logout"
+                                   class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                           </div>
+                       </div>
+                     
+                   </li>
+               </ul>
+           </div>
+       </nav>
+   </header>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <div align="center">
+    <h2>外送員工送單量</h2>
+   <select id="chartSelect">
+     <option value="pie">圓餅圖</option>
+     <option value="bar">長條圖</option>
+   </select>
+  </div>
+  <div style="width: 50%; margin: 0  auto;">
+      <canvas id="myChart1"></canvas>
+  </div>
+  <div style="width: 50%; margin: 0 auto;display: none;">
+    <canvas id="myChart2"></canvas>
+  </div>
+  <br>
+    <button id="history" class="btn btn-dark" style="margin-left: 46%">
+        回歷史訂單
+    </button>
+    <script src="../../../static/back/js/delivery/data.js"></script>
+    <script src="../../../static/back/js/delivery/CRUD.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/sidebarmenu.js"></script>
+    <script src="../assets/js/app.min.js"></script> -->
+    <!-- <script src="../assets/libs/simplebar/dist/simplebar.js"></script> --> 
+    <script>
+    $('#history').click(function(){
+        let  url =  '/delivery/history';
+        window.location.href=url; 
+      })
+
+
+    var ctx1 = document.getElementById('myChart1').getContext('2d');
+    var ctx2 = document.getElementById('myChart2').getContext('2d');
+
+  
+    // 創建圓餅圖
+    $(document).ready(function() {
+    // 儲存從後端獲取的數據
+    let empdata = [];
+    
+    // AJAX 請求獲取數據
+    $.ajax({
+        url: '/delivery/ename',
+        method: 'GET',
+        dataType: 'json',
+        success: function(data) {
+            // 成功回調中儲存數據
+            empdata = data;
+
+            // 創建圓餅圖
+            var pieChart = new Chart(ctx1, {
+                type: 'pie', // 圖表類型：圓餅圖
+                data: {
+                    labels: ['陳建宏', '林佳蓉', '謝俊逸', '黃美玲', '蔡政恩'], // 圓餅圖區塊標籤
+                    datasets: [{
+                        label: '外送單數量', // 數據集標籤
+                        data: empdata, // 使用從後端獲取的數據
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ], // 填充顏色
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ], // 邊框顏色
+                        borderWidth: 1 // 邊框寬度
+                    }]
+                },
+                options: {
+                    responsive: true, // 響應式設計
+                    plugins: {
+                        legend: {
+                            position: 'top', // 標籤位置
+                        },
+                        title: {
+                            display: true,
+                            text: '外送員姓名' // 圖表標題
+                        }
+                    }
+                }
+            });
+
+            // 創建長條圖
+            var barChart = new Chart(ctx2, {
+            type: 'bar', // 圖表類型：長條圖
+            data: {
+                labels: ['陳建宏', '林佳蓉', '謝俊逸', '黃美玲', '蔡政恩'], // 長條圖標籤
+                datasets: [{
+                    label: '外送單量', // 數據集標籤
+                    data: empdata, // 使用從後端獲取的數據
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ], // 填充顏色
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ], // 邊框顏色
+                    borderWidth: 1 // 邊框寬度
+                }]
+            },
+            options: {
+                responsive: true, // 響應式設計
+                plugins: {
+                    legend: {
+                        position: 'top', // 標籤位置
+                    },
+                    title: {
+                        display: true,
+                        text: '外送員姓名' // 圖表標題
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true // y軸從零開始
+                    }
+                }
+            }
+        });
+            // 監聽選擇框的變化事件
+            $('#chartSelect').on('change', function() {
+                if (this.value === 'pie') {
+                    $('#myChart1').parent().show();
+                    $('#myChart2').parent().hide();
+                } else if (this.value === 'bar') {
+                    $('#myChart1').parent().hide();
+                    $('#myChart2').parent().show();
+                }
+            });
+        },
+        error: function(error) {
+            console.error('Error fetching data:', error);
+        }
+    });
+
+});
+</script>    
+</body>
+</html>

@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+/* #table_id {
+    width: 100%;
+    border-collapse: collapse;
+} */
+
+#table_id th,
+#table_id td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+/* 標頭顏色 */
+#table_id th {
+    background-color: #f2f2f2;
+}
+
+div.align-center {
+    text-align: center;
+} 
+
+/* #update {
+    padding: 5px 10px;
+      cursor: pointer;
+      background-color: blue;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+} */
+#table_id {
+    padding: 20px;
+}
+
+.card-body {
+    text-align: center;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+/* button {
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+} */
+/* 
+button:hover {
+    background-color: #0056b3;
+} */
+
+#table_id {
+    width: 100%;
+    overflow-x: auto; 
+}
+
+/* button {
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+} */
+
+/* #del {
+  padding: 5px 10px;
+    cursor: pointer;
+    background-color: red;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+} */
+
+/* h2 {
+    color: #007bff;
+    font-size: 24px;
+} */
+
+/* div.align-center {
+    margin-top: 20px;
+}
+
+#table_id {
+    margin-top: 20px;
+} */
+
+/* @media (max-width: 768px) {
+    #table_id {
+        font-size: 14px;
+    }
+}  */
+
+

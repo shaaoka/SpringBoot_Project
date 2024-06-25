@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>新增活動</title>
+    <link rel="shortcut icon" type="image/png" href="../../../static/images/member/pizzaQ.png" />
+    <link rel="stylesheet" href="../../../static/back/css/styles.min.css"/>
+    <link rel="stylesheet" href="../../../static/back/css/promotions/Insert.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+<!--  Body Wrapper -->
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+data-sidebar-position="fixed" data-header-position="fixed">
+<!-- Sidebar Start -->
+<aside class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+            <a href="#" class="text-nowrap logo-img">
+                <img src="../../../static/images/indexImages/DonerPizzaSmall.png" width="180" alt=""/>
+            </a>
+            <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+                <i class="ti ti-x fs-8"></i>
+            </div>
+        </div>
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+            <ul id="sidebarnav">
+                <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i> <span
+                        class="hide-menu">後台功能列表</span></li>
+
+                <li class="sidebar-item"><a class="sidebar-link" href="/promotions/promotionsMain"
+                        aria-expanded="false"> <span>
+                            <i class="ti ti-typography"></i>
+                        </span> <span class="hide-menu">活動管理功能</span>
+                    </a></li>
+
+                <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i> <span
+                        class="hide-menu">其他功能列表</span></li>
+
+                <li class="sidebar-item"><a class="sidebar-link" href="/emp/Member.SelectAll/1"
+                        aria-expanded="false"> <span>
+                            <i class="ti ti-layout-dashboard"></i>
+                        </span> <span class="hide-menu">會員管理功能</span>
+                    </a></li>
+
+
+                <li class="sidebar-item"><a class="sidebar-link" href="/product/Product_Test_Main"
+                        aria-expanded="false"> <span>
+                            <i class="ti ti-article"></i>
+                        </span> <span class="hide-menu">產品管理功能</span>
+                    </a></li>
+                <li class="sidebar-item"><a class="sidebar-link" href="/order/order.action"
+                        aria-expanded="false"> <span>
+                            <i class="ti ti-alert-circle"></i>
+                        </span> <span class="hide-menu">訂單管理功能</span>
+                    </a></li>
+                <li class="sidebar-item"><a class="sidebar-link" href="/reservation/reservemain.controller"
+                        aria-expanded="false"> <span> <i class="ti ti-cards"></i>
+                        </span> <span class="hide-menu">訂位管理功能</span>
+                    </a></li>
+                <li class="sidebar-item"><a class="sidebar-link" href="/delivery/home" aria-expanded="false">
+                        <span> <i class="ti ti-file-description"></i>
+                        </span> <span class="hide-menu">外送管理功能</span>
+                    </a></li>
+
+                <li class="sidebar-item"><a class="sidebar-link" href="/emp/EmpGoBackToEmpIndex"
+                        aria-expanded="false"> <span>
+                            <i class="ti ti-typography"></i>
+                        </span> <span class="hide-menu">返回主頁</span>
+                    </a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- End Sidebar scroll-->
+    </aside>
+    <!--  Sidebar End -->
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+        <!--  Header Start -->
+        <header class="app-header">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <ul class="navbar-nav">
+                    <li class="nav-item d-block d-xl-none">
+                        <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse"
+                            href="javascript:void(0)">
+                            <i class="ti ti-menu-2"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-icon-hover" href="javascript:void(0)">
+                            <i class="ti ti-bell-ringing"></i>
+                            <div class="notification bg-primary rounded-circle"></div>
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+                    <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+                        <li class="nav-item dropdown"><a class="nav-link nav-icon-hover" href="javascript:void(0)"
+                                id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="/member/user.png" alt="" width="35" height="35" class="rounded-circle"
+                                    th:each="emp : ${emp}"><span th:text="${emp.detailBean.empName}"></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
+                                aria-labelledby="drop2">
+                                <div class="message-body">
+                                    <a href="javascript:void(0)"
+                                        class="d-flex align-items-center gap-2 dropdown-item"> <i
+                                            class="ti ti-user fs-6"></i>
+                                        <p class="mb-0 fs-3">My Profile</p>
+                                    </a> <a href="javascript:void(0)"
+                                        class="d-flex align-items-center gap-2 dropdown-item"> <i
+                                            class="ti ti-mail fs-6"></i>
+                                        <p class="mb-0 fs-3">My Account</p>
+                                    </a>
+                                    </a> <a href="javascript:void(0)"
+                                        class="d-flex align-items-center gap-2 dropdown-item"> <i
+                                            class="ti ti-list-check fs-6"></i>
+                                        <p class="mb-0 fs-3">My Task</p>
+                                    </a> <a href="/emp/logout"
+                                        class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!--  Header End -->
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-body">
+
+                    <div style="text-align: center;">
+
+                        <h2>新增活動</h2>
+                        <form action="/promotions/promotions/insert" method="post" enctype="multipart/form-data">
+
+                            <label for="Promotions_id">活動編號:</label> <input type="text"
+                                                                                id="Promotions_id" name="Promotions_id"
+                                                                                th:required><br>
+                            <label for="Promotions_name">活動名稱:</label> <input type="text"
+                                                                                  id="Promotions_name"
+                                                                                  name="Promotions_name"
+                                                                                  th:required><br>
+                            <label for="Promotions_content">活動內容:</label>
+                            <textarea id="Promotions_content" name="Promotions_content" rows="6"
+                                      th:required></textarea>
+                            <br> <br> <label for="Promotions_picture">上傳活動圖片:</label> <input
+                                type="file" id="Promotions_picture" name="Promotions_picture"
+                                accept="image/gif, image/jpeg, image/png"><br> <img
+                                id="Promotions_picture_img" th:src="@{'#'}"/><br> <br> <label
+                                for="Promotions_discount">活動折扣:</label> <input type="number"
+                                                                                   id="Promotions_discount"
+                                                                                   name="Promotions_discount" min="5"
+                                                                                   step="5"
+                                                                                   th:required><br> <label
+                                for="Promotions_discountcode">折扣碼:</label>
+                            <input type="text" id="Promotions_discountcode"
+                                   name="Promotions_discountcode" th:required><br> <label
+                                for="Promotions_startdate">開始日期:</label> <input type="date"
+                                                                                    id="Promotions_startdate"
+                                                                                    name="Promotions_startdate"
+                                                                                    th:required><br>
+
+                            <label for="Promotions_enddate">結束日期:</label> <input type="date"
+                                                                                     id="Promotions_enddate"
+                                                                                     name="Promotions_enddate"
+                                                                                     th:required><br>
+
+                            <button id="clkbtn" class="btn">一鍵輸入</button>
+                            <button class="btn" type="submit" value="send">確定</button>
+                            
+
+                        </form>
+                        
+
+                        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+                        <script th:inline="javascript">
+                            $("#Promotions_picture").change(function () {
+                                readURL(this);
+                            });
+
+                            function readURL(input) {
+                                if (input.files && input.files[0]) {
+                                    var reader = new FileReader();
+                                    reader.onload = function (e) {
+                                        $("#Promotions_picture_img").attr('src', e.target.result);
+                                    }
+                                    reader.readAsDataURL(input.files[0]);
+                                }
+                            }
+
+                            $(document).ready(function () {
+                                $('#clkbtn').click(function (event) {
+                                    //不要立即提交
+                                    event.preventDefault();
+
+                                    $('#Promotions_id').val('9999');
+                                    $('#Promotions_name').val('歡慶畢業');
+                                    $('#Promotions_content').val('恭喜大家畢業');
+                                    $('#Promotions_discount').val('100');
+                                    $('#Promotions_discountcode').val('AAA100');
+                                    $('#Promotions_startdate').val('2024-05-01');
+                                    $('#Promotions_enddate').val('2024-06-01');
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../static/back/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../../../static/back/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../static/back/js/sidebarmenu.js"></script>
+    <script src="../../../static/back/js/app.min.js"></script>
+    <script src="../../../static/back/libs/simplebar/dist/simplebar.js"></script>
+</body>
+
+</html>

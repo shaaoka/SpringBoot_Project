@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>所有活動資料</title>
+    <link rel="shortcut icon" type="image/png" href="../../../static/images/member/pizzaQ.png" />
+    <link rel="stylesheet" href="../../../static/back/css/styles.min.css"/>
+    <link rel="stylesheet" href="../../../static/back/css/promotions/GetAll.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css">
+
+</head>
+
+<body>
+    <!--  Body Wrapper -->
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="fixed" data-header-position="fixed">
+        <!-- Sidebar Start -->
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div>
+                <div class="brand-logo d-flex align-items-center justify-content-between">
+                    <a href="#" class="text-nowrap logo-img">
+                        <img src="../../../static/images/indexImages/DonerPizzaSmall.png" width="180" alt=""/>
+                    </a>
+                    <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+                        <i class="ti ti-x fs-8"></i>
+                    </div>
+                </div>
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+                    <ul id="sidebarnav">
+                        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i> <span
+                                class="hide-menu">後台功能列表</span></li>
+
+                        <li class="sidebar-item"><a class="sidebar-link" href="/promotions/promotionsMain"
+                                aria-expanded="false"> <span>
+                                    <i class="ti ti-typography"></i>
+                                </span> <span class="hide-menu">活動管理功能</span>
+                            </a></li>
+
+                        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i> <span
+                                class="hide-menu">其他功能列表</span></li>
+
+                        <li class="sidebar-item"><a class="sidebar-link" href="/emp/Member.SelectAll/1"
+                                aria-expanded="false"> <span>
+                                    <i class="ti ti-layout-dashboard"></i>
+                                </span> <span class="hide-menu">會員管理功能</span>
+                            </a></li>
+
+
+                        <li class="sidebar-item"><a class="sidebar-link" href="/product/Product_Test_Main"
+                                aria-expanded="false"> <span>
+                                    <i class="ti ti-article"></i>
+                                </span> <span class="hide-menu">產品管理功能</span>
+                            </a></li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="/order/order.action"
+                                aria-expanded="false"> <span>
+                                    <i class="ti ti-alert-circle"></i>
+                                </span> <span class="hide-menu">訂單管理功能</span>
+                            </a></li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="/reservation/reservemain.controller"
+                                aria-expanded="false"> <span> <i class="ti ti-cards"></i>
+                                </span> <span class="hide-menu">訂位管理功能</span>
+                            </a></li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="/delivery/home" aria-expanded="false">
+                                <span> <i class="ti ti-file-description"></i>
+                                </span> <span class="hide-menu">外送管理功能</span>
+                            </a></li>
+
+                        <li class="sidebar-item"><a class="sidebar-link" href="/emp/EmpGoBackToEmpIndex"
+                                aria-expanded="false"> <span>
+                                    <i class="ti ti-typography"></i>
+                                </span> <span class="hide-menu">返回主頁</span>
+                            </a></li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!--  Sidebar End -->
+        <!--  Main wrapper -->
+        <div class="body-wrapper">
+            <!--  Header Start -->
+            <header class="app-header">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <ul class="navbar-nav">
+                        <li class="nav-item d-block d-xl-none">
+                            <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse"
+                                href="javascript:void(0)">
+                                <i class="ti ti-menu-2"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-icon-hover" href="javascript:void(0)">
+                                <i class="ti ti-bell-ringing"></i>
+                                <div class="notification bg-primary rounded-circle"></div>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+                        <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+                            <li class="nav-item dropdown"><a class="nav-link nav-icon-hover" href="javascript:void(0)"
+                                    id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="/member/user.png" alt="" width="35" height="35" class="rounded-circle"
+                                        th:each="emp : ${emp}"><span th:text="${emp.detailBean.empName}"></span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
+                                    aria-labelledby="drop2">
+                                    <div class="message-body">
+                                        <a href="javascript:void(0)"
+                                            class="d-flex align-items-center gap-2 dropdown-item"> <i
+                                                class="ti ti-user fs-6"></i>
+                                            <p class="mb-0 fs-3">My Profile</p>
+                                        </a> <a href="javascript:void(0)"
+                                            class="d-flex align-items-center gap-2 dropdown-item"> <i
+                                                class="ti ti-mail fs-6"></i>
+                                            <p class="mb-0 fs-3">My Account</p>
+                                        </a>
+                                        </a> <a href="javascript:void(0)"
+                                            class="d-flex align-items-center gap-2 dropdown-item"> <i
+                                                class="ti ti-list-check fs-6"></i>
+                                            <p class="mb-0 fs-3">My Task</p>
+                                        </a> <a href="/emp/logout"
+                                            class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <!--  Header End -->
+            <div class="container-fluid">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div style="text-align: center;">
+                            <h2>所有活動資料</h2>
+                            <table id="promotionsTable">
+                                <thead>
+                                    <tr>
+                                        <th>活動編號</th>
+                                        <th>活動名稱</th>
+                                        <th>活動內容</th>
+                                        <th>活動圖片</th>
+                                        <th>活動折扣</th>
+                                        <th>折扣碼</th>
+                                        <th>開始日期</th>
+                                        <th>結束日期</th>
+                                        <th>修改</th>
+                                        <th>刪除</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="promotions : ${promotions}">
+                                        <td th:text="${promotions.promotions_id}"></td>
+                                        <td><a th:href="@{/promotions/promotions/{id}(id=${promotions.promotions_id})}"
+                                                th:text="${promotions.promotions_name}"></a></td>
+                                        <td th:text="${promotions.promotions_content}"></td>
+                                        <td><img class="pimg" th:src="${promotions.promotions_picture}" alt="暫無圖片"></td>
+                                        <td th:text="${promotions.promotions_discount}"></td>
+                                        <td th:text="${promotions.promotions_discountcode}"></td>
+                                        <td th:text="${promotions.promotions_startdate}"></td>
+                                        <td th:text="${promotions.promotions_enddate}"></td>
+                                        <td><a class="btn"
+                                                th:href="@{/promotions/promotions/update/{id}(id=${promotions.promotions_id})}">修改</a>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-danger" href="javascript:void(0);" th:attr="data-promotions-name=${promotions.promotions_name},
+                           data-promotions-id=${promotions.promotions_id}" onclick="deletePromotions(this)">
+                                                刪除
+                                            </a>
+                                        </td>
+
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p>
+                                <a class="btn" th:href="@{/promotions/promotions/insert}">新增活動</a>
+<!--                                <a class="btn" th:href="@{/MemberGoBackToIndex}">回首頁</a>-->
+                            </p>
+                        </div>
+
+                        <script th:inline="javascript">
+
+                            $.getScript("https://cdn.datatables.net/2.0.7/js/dataTables.min.js", function () {
+                                $('#promotionsTable').DataTable({
+                                    language: {
+                                        "lengthMenu": "顯示 _MENU_ 筆資料",
+                                        "sInfo": "目前有 _MAX_ 筆資料",
+                                        "sSearch": "搜尋:",
+                                        "sEmptyTable": "尚未有資料紀錄存在",
+                                        "oPaginate": {
+                                            "sFirst": "首頁",
+                                            "sPrevious": "上一頁",
+                                            "sNext": "下一頁",
+                                            "sLast": "末頁"
+                                        },
+                                    }
+                                });
+                            });
+
+
+                            function deletePromotions(element) {
+                                var promotionsName = element.getAttribute('data-promotions-name');
+                                var promotionsId = element.getAttribute('data-promotions-id');
+
+                                var confirmDelete = confirm("確定要刪除活動 '" + promotionsName + "' 嗎？");
+                                if (confirmDelete) {
+                                    $.ajax({
+                                        url: "/promotions/promotions/delete/" + promotionsId,
+                                        type: "DELETE",
+                                        success: function (response) {
+                                            window.location.href = "/promotions/promotionsMain";
+                                            alert("活動已成功刪除！");
+                                        },
+                                        error: function (xhr, status, error) {
+                                            alert("刪除活動失敗：");
+                                        }
+                                    });
+                                }
+                            }
+
+                        </script>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../static/back/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../../../static/back/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../static/back/js/sidebarmenu.js"></script>
+    <script src="../../../static/back/js/app.min.js"></script>
+    <script src="../../../static/back/libs/simplebar/dist/simplebar.js"></script>
+
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
+
+
+</body>
+
+</html>
